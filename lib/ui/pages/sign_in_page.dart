@@ -58,6 +58,7 @@ class _SignInPageState extends State<SignInPage> {
                 border: Border.all(color: Colors.black)),
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: TextField(
+              obscureText: true,
               controller: passwordController,
               decoration: InputDecoration(
                   border: InputBorder.none,
@@ -105,7 +106,9 @@ class _SignInPageState extends State<SignInPage> {
                         elevation: 1,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8))),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(SignUpPage());
+                    },
                     child: Text(
                       'Create New Account',
                       style: GoogleFonts.poppins(
