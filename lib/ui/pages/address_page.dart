@@ -1,50 +1,33 @@
 part of 'pages.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key key}) : super(key: key);
+class AddressPage extends StatefulWidget {
+  const AddressPage({Key key}) : super(key: key);
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<AddressPage> createState() => _AddressPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _AddressPageState extends State<AddressPage> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    TextEditingController nameController = TextEditingController();
+    TextEditingController phoneController = TextEditingController();
+    TextEditingController addressController = TextEditingController();
+    TextEditingController houseController = TextEditingController();
     bool isLoading = false;
 
     return GeneralPage(
-      title: "Sign Up",
-      subtitle: "Register and eat",
+      title: "Address",
+      subtitle: "Make sure it's valid",
       onBackButtonPressed: () {
         Get.back();
       },
       child: Column(
         children: [
           Container(
-            width: 110,
-            height: 110,
-            margin: EdgeInsets.only(top: 26),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/photo_border.png'))),
-            child: Container(
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      image: NetworkImage(
-                          'https://i1.sndcdn.com/avatars-000145577075-3sufgq-t500x500.jpg'),
-                      fit: BoxFit.cover)),
-            ),
-          ),
-          Container(
             width: double.infinity,
             margin: EdgeInsets.fromLTRB(defaultMargin, 24, defaultMargin, 6),
             child: Text(
-              'Full Name',
+              'Phone No',
               style: blackFontStyle2,
             ),
           ),
@@ -56,18 +39,18 @@ class _SignUpPageState extends State<SignUpPage> {
                 border: Border.all(color: Colors.black)),
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: TextField(
-              controller: nameController,
+              controller: phoneController,
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: grayFontStyle,
-                  hintText: "Type your full name"),
+                  hintText: "Type your phone number"),
             ),
           ),
           Container(
             width: double.infinity,
             margin: EdgeInsets.fromLTRB(defaultMargin, 24, defaultMargin, 6),
             child: Text(
-              'Email Address',
+              'Address',
               style: blackFontStyle2,
             ),
           ),
@@ -79,18 +62,18 @@ class _SignUpPageState extends State<SignUpPage> {
                 border: Border.all(color: Colors.black)),
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: TextField(
-              controller: emailController,
+              controller: addressController,
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: grayFontStyle,
-                  hintText: "Type your email address"),
+                  hintText: "Type your address"),
             ),
           ),
           Container(
             width: double.infinity,
             margin: EdgeInsets.fromLTRB(defaultMargin, 24, defaultMargin, 6),
             child: Text(
-              'Password',
+              'House No.',
               style: blackFontStyle2,
             ),
           ),
@@ -102,14 +85,43 @@ class _SignUpPageState extends State<SignUpPage> {
                 border: Border.all(color: Colors.black)),
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: TextField(
-              obscureText: true,
-              controller: passwordController,
+              controller: houseController,
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: grayFontStyle,
-                  hintText: "Type your password"),
+                  hintText: "Type your house number"),
             ),
           ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.fromLTRB(defaultMargin, 24, defaultMargin, 6),
+            child: Text(
+              'City',
+              style: blackFontStyle2,
+            ),
+          ),
+          // Container(
+          //     width: double.infinity,
+          //     margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+          //     decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(8),
+          //         border: Border.all(color: Colors.black)),
+          //     padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+          //     child: DropdownButton(
+          //         isExpanded: true,
+          //         underline: SizedBox(),
+          //         items: [
+          //           DropdownMenuItem(
+          //             child: Text('Bandung', style: blackFontStyle3),
+          //           ),
+          //           DropdownMenuItem(
+          //             child: Text('Jakarta', style: blackFontStyle3),
+          //           ),
+          //           DropdownMenuItem(
+          //             child: Text('Surabaya', style: blackFontStyle3),
+          //           ),
+          //         ],
+          //         onChanged: (item) {})),
           Container(
             width: double.infinity,
             margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
@@ -120,11 +132,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   elevation: 1,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8))),
-              onPressed: () {
-                Get.to(() => AddressPage());
-              },
+              onPressed: () {},
               child: Text(
-                'Continue',
+                'Sign Up Now',
                 style: GoogleFonts.poppins(
                     color: Colors.black,
                     fontSize: 15,

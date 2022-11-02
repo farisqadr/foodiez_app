@@ -85,7 +85,7 @@ class _SignInPageState extends State<SignInPage> {
                     child: Text(
                       'Sign In',
                       style: GoogleFonts.poppins(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 15,
                           fontWeight: FontWeight.w500),
                     ),
@@ -103,11 +103,11 @@ class _SignInPageState extends State<SignInPage> {
                 : ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: grayColor,
-                        elevation: 1,
+                        elevation: 0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8))),
                     onPressed: () {
-                      Get.to(SignUpPage());
+                      Get.to(() => SignUpPage());
                     },
                     child: Text(
                       'Create New Account',
