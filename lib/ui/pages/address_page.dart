@@ -8,13 +8,23 @@ class AddressPage extends StatefulWidget {
 }
 
 class _AddressPageState extends State<AddressPage> {
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController houseController = TextEditingController();
+  bool isLoading = false;
+  List<String> cities;
+  String selectedCity;
+
+  @override
+  void initState() {
+    super.initState();
+
+    cities = ['Bandung', 'Jakarta', 'Surabaya'];
+    selectedCity = cities[0];
+  }
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController phoneController = TextEditingController();
-    TextEditingController addressController = TextEditingController();
-    TextEditingController houseController = TextEditingController();
-    bool isLoading = false;
-
     return GeneralPage(
       title: "Address",
       subtitle: "Make sure it's valid",
@@ -100,28 +110,31 @@ class _AddressPageState extends State<AddressPage> {
               style: blackFontStyle2,
             ),
           ),
-          // Container(
-          //     width: double.infinity,
-          //     margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-          //     decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(8),
-          //         border: Border.all(color: Colors.black)),
-          //     padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-          //     child: DropdownButton(
-          //         isExpanded: true,
-          //         underline: SizedBox(),
-          //         items: [
-          //           DropdownMenuItem(
-          //             child: Text('Bandung', style: blackFontStyle3),
-          //           ),
-          //           DropdownMenuItem(
-          //             child: Text('Jakarta', style: blackFontStyle3),
-          //           ),
-          //           DropdownMenuItem(
-          //             child: Text('Surabaya', style: blackFontStyle3),
-          //           ),
-          //         ],
-          //         onChanged: (item) {})),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.black)),
+            child: DropdownButton(
+              hint: Text("Select the city"),
+              value: selectedCity,
+              isExpanded: true,
+              underline: SizedBox(),
+              items: cities.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items),
+                );
+              }).toList(),
+              onChanged: (newValue) {
+                setState(() {
+                  selectedCity = newValue;
+                });
+              },
+            ),
+          ),
           Container(
             width: double.infinity,
             margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
